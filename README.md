@@ -122,7 +122,7 @@ A escolha da biblioteca `gqlen` se dá pelas funcionalidades de abstração, doc
 
 <!-- Markdown Reference Style -->
 [gqlgen]: https://gqlgen.com/getting-started/
-[gqlgen-examples]: https://github.com/99designs/gqlgen/tree/master/_examples
+[qlgen-examples]: https://github.com/99designs/gqlgen/tree/master/_examples
 [graphql]: https://graphql.org/learn/
 [go.dev]: https://go.dev/doc/
 [docker]: https://docs.docker.com/get-docker/
