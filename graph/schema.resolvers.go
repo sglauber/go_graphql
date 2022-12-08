@@ -6,8 +6,9 @@ package graph
 
 import (
 	"context"
-	"unicode"
+	"fmt"
 	"strings"
+	"unicode"
 
 	"github.com/sglauber/studiosol/graph/model"
 )
@@ -60,6 +61,15 @@ func hasMinDigit(s string, val int) bool {
 	return equalOrGreaterThan(digitCharsCount, val)
 }
 
+func arrayContains(failedRules []*string, rule string) bool {
+	for _, v := range failedRules {
+		if *v == rule {
+			return true
+		}
+	}
+	return false
+}
+
 func (r *queryResolver) Verify(ctx context.Context, password string, rules []*model.RuleInput) (*model.CheckValidPassword, error) {
 
 	// Array de strings para armazenar todas as regras que não passarem na verificação
@@ -68,31 +78,31 @@ func (r *queryResolver) Verify(ctx context.Context, password string, rules []*mo
 	// Percorremos o array de regras e checamos por cada uma delas, se a regra estiver definida realizamos sua validação
 	for _, rule := range rules {
 		if *rule.Rule == "minSize" {
-			if !equalOrGreaterThan(len(password), *rule.Value) {
+			if !equalOrGreaterThan(len(password), *rule.Value) && !arrayContains(failedRules, *rule.Rule) {
 				failedRules = append(failedRules, rule.Rule)
 			}
 		}
 
 		if *rule.Rule == "minSpecialChars" {
-			if !hasMinSpecialChars(password, *rule.Value) {
+			if !hasMinSpecialChars(password, *rule.Value) && !arrayContains(failedRules, *rule.Rule){
 				failedRules = append(failedRules, rule.Rule)
 			}
 		}
 
 		if *rule.Rule == "minUppercase" {
-			if !hasMinUpperCaseChars(password, *rule.Value) {
+			if !hasMinUpperCaseChars(password, *rule.Value) && !arrayContains(failedRules, *rule.Rule) {
 				failedRules = append(failedRules, rule.Rule)
 			}
 		}
 		
 		if *rule.Rule == "minLowercase" {
-			if !hasMinLowerCaseChars(password, *rule.Value) {
+			if !hasMinLowerCaseChars(password, *rule.Value) && !arrayContains(failedRules, *rule.Rule){
 				failedRules = append(failedRules, rule.Rule)
 			}
 		}
 
 		if *rule.Rule == "minDigit" {
-			if !hasMinDigit(password, *rule.Value) {
+			if !hasMinDigit(password, *rule.Value) && !arrayContains(failedRules, *rule.Rule) {
 				failedRules = append(failedRules, rule.Rule)
 			}
 		}

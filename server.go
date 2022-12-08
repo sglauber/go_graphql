@@ -23,6 +23,6 @@ func main() {
 	http.Handle("/", playground.Handler("StudioSol - GraphiQL", "/graphql"))
 	http.Handle("/graphql", srv)
 
-	log.Printf("connect to http://localhost:%s/graphql for StudioSol - GraphiQL", port)
+	log.Printf("connect to http://localhost:%s/ for StudioSol - GraphiQL", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
