@@ -43,7 +43,7 @@ query {
 <!-- PRIMEIROS PASSOS PARA RODAR A APLICAÇÃO -->
 
 
-## Estrutura de pastas - comentários
+## Estrutura de pastas
 
 ```
 ├── go.mod
@@ -81,7 +81,7 @@ Você pode buildar a imagem com `docker build`, ou apenas executar o container c
 
 - <nome_imagem> nome que deseja registrar para sua imagem
 - <nome_container> nome que deseja registrar para seu container
-- <porta:8080> você deve mapear a port do host onde o container irá se conectar, por padrão pode utilizar 8080
+- <porta:8080> você deve mapear a porta do host onde o container irá se conectar, como padrão pode utilizar `8080:8080`
 
 ```bash
   docker build -t <nome_imagem> . && docker run --name <nome_container> -p <porta:8080> <nome_imagem>
@@ -93,15 +93,16 @@ Você poderá apenas executar a imagem, isto fará com que o Docker realize o do
   docker run -p <porta:8080> --rm -d sglauber/go-graphql
 ```
 
-Após executar qualquer um dos comandos acima vá até o navegador e acesse `localhost:<porta>/` para visualizar o GraphiQL
+Após executar o comando acima acesse a rota `localhost:<porta>/` para visualizar o GraphiQL.
 
 ### Go na máquina local
 
+> Obs.: Por padrão o servidor será iniciado na porta: 8080
+
 - Execute `go mod tidy` para adicionar automaticamente as dependências 
 - Com `go run server.go` você irá iniciar o servidor 
-- Então acesse a rota `localhost:<porta>/` para visualizar o GraphiQL
-- Realize consultas na rota `localhost:<porta>/graphql`
-
+- Então acesse a rota `localhost:8080/` para visualizar o GraphiQL
+- Realize consultas na rota `localhost:8080/graphql`
 
 ## Experiência
 
