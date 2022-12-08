@@ -107,7 +107,9 @@ Após executar o comando acima acesse a rota `localhost:<porta>/` para visualiza
 ## Experiência
 
 Este foi meu primeiro contato com a linguagem `Go`, assim como APIs em graphql, foi prazeroso poder realizar este projeto e entender um pouco como funcionam estas tecnologias.
-Decidi escolher `Go` para linguagem de implementação exatamente pelo desafio, acredito que o framework ou linguagem são ferramentas que se utilizadas corretamente nos auxiliam a chegar no objetivo de forma satisfatória e sou grato por poder tê-lo completado e feliz com o resultado, foi uma ótima oportunidades de aprendizado. A escolha da biblioteca `gqlen` se dá pelas funcionalidades de abstração, documentação e quantidade de exemplos que ela oferece se comparada à outras bibliotecas como `graphql-go` e `gophers`. Como podemos definir o schema-first ao invés de implementar interfaces e tipos diretamente no código ela facilitou o processo de aprendizagem e elimina boa parte dos problemas com relação à tipagem, porém, é um pouco chato de lidar quando se é necessário realizar o regenerate para mapear os models, já que ela irá também reescrever os resolvers.
+Decidi escolher `Go` para linguagem de implementação exatamente pelo desafio, acredito que o framework ou linguagem são ferramentas que se utilizadas corretamente nos auxiliam a chegar no objetivo de forma satisfatória e sou grato por poder tê-lo completado e feliz com o resultado, foi uma ótima oportunidades de aprendizado. 
+
+A escolha da biblioteca `gqlen` se dá pelas funcionalidades de abstração, documentação e quantidade de exemplos que ela oferece se comparada à outras bibliotecas como `graphql-go` e `gophers`. Como podemos definir o schema-first ao invés de implementar interfaces e tipos diretamente no código ela facilitou o processo de aprendizagem e elimina boa parte dos problemas com relação à tipagem, porém, é um pouco chato de lidar quando se é necessário realizar o regenerate para mapear os models, já que ela irá também reescrever os resolvers.
 
 ## Referências
 
