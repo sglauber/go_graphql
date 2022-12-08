@@ -72,6 +72,9 @@ onde você poderá visualizar e ralizar os testes da API.
 
 Para realizar apenas a consulta você pode utilizar um cliente como [Postman][postman]
 
+A api recebe uma consulta `verify` que aceita os parâmetros `password` uma string com a senha à ser validade e um array `rules` que deve ser preenchido com os objetos
+de regras, contendo uma `rule` que é o nome da regra e um `value` que é o valor da regra à ser validada. Você pode seguir a consulta de exemplo para montar a sua consulta.
+
 ### Com Docker
 
 Você pode buildar a imagem com `docker build`, ou apenas executar o container com `docker run`
