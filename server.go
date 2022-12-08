@@ -20,8 +20,8 @@ func main() {
 
 	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
 
-	http.Handle("/graphql", playground.Handler("StudioSol - GraphiQL", "/query"))
-	http.Handle("/query", srv)
+	http.Handle("/", playground.Handler("StudioSol - GraphiQL", "/query"))
+	http.Handle("/graphql", srv)
 
 	log.Printf("connect to http://localhost:%s/graphql for StudioSol - GraphiQL", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
