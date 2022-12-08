@@ -107,12 +107,18 @@ Após executar o comando acima acesse a rota `localhost:<porta>/` para visualiza
 - Então acesse a rota `localhost:8080/` para visualizar o GraphiQL
 - Realize consultas na rota `localhost:8080/graphql`
 
-## Experiência
+## Experiência e lógica
 
 Este foi meu primeiro contato com a linguagem `Go`, assim como APIs em graphql, foi prazeroso poder realizar este projeto e entender um pouco como funcionam estas tecnologias.
 Decidi escolher `Go` para linguagem de implementação exatamente pelo desafio, acredito que o framework ou linguagem são ferramentas que se utilizadas corretamente nos auxiliam a chegar no objetivo de forma satisfatória e sou grato por poder tê-lo completado e feliz com o resultado, foi uma ótima oportunidades de aprendizado. 
 
 A escolha da biblioteca `gqlen` se dá pelas funcionalidades de abstração, documentação e quantidade de exemplos que ela oferece se comparada à outras bibliotecas como `graphql-go` e `gophers`. Como podemos definir o schema-first ao invés de implementar interfaces e tipos diretamente no código ela facilitou o processo de aprendizagem e elimina boa parte dos problemas com relação à tipagem, porém, é um pouco chato de lidar quando se é necessário realizar o regenerate para mapear os models, já que ela irá também reescrever os resolvers.
+
+Começo recuperando as regras que foram passadas, percorrendo a lista das regras informadas através da api e comparando-as com as possíveis regras (veja regras do projeto). Se uma destas regras for encontrada na lista então iremos checar se a senha informada através da API se encontra dentro dos padrões. 
+
+Para estas verificações criei funções com responsabilidade única, uma função para cada uma das regras, que verifica a existência dos caracteres especiais, existencia de números (dígitos), letras maiúsculas, letras minúsculas e se a quantidade destes caracteres é maior ou igual ao valor informado através da API, se o caractere é encontrado, então acumulamos este valor e após percorrermos toda a string (password), passamos esta informação para a função `isEqualOrGreaterThan`, que retorna um boolean `(true, false)` caso o valor de caracteres encontrados no `password` for maior ou igual ao exigido pela regra. Se o retorno desta função for `false` adiciono-a à lista `failedRules` que será retornada em nossa API GraphQL.
+
+A excessão à esta regra é a função `arrayContains` que recebe a nossa lista de failedRules e verifica se a regra já existe nesta lista, assumi que regras repetidas ainda possam contar como entradas válidas mas não seria correto retornar a mesma regra mais de uma vez. 
 
 ## Referências
 
