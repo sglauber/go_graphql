@@ -1,0 +1,27 @@
+### 
+# Pode haver uma chamada para API sem que uma lista de regras seja informada,
+# porém, se a regra for informada ela precisa conter os respectivos campos
+###
+type Rule {
+  rule: String!
+  value: Int!
+}
+
+# A lista pode ser vazia [], mas não deve conter valores nulos, como por exemplo noMatch: null
+type CheckValidPassword {
+  noMatch: [String]!
+  verify: Boolean
+}
+
+input RuleInput {
+  rule: String
+  value: Int
+}
+
+####
+# Como estamos criando uma API para validar senhas, 
+# é necessário pelo menos informá-la. Por isso a definimos como necessária para nosso input
+###
+type Query {
+  verify(password: String!, rules: [RuleInput]): CheckValidPassword
+}
